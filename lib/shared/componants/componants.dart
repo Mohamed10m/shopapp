@@ -5,7 +5,7 @@ Widget defaultFormField({
   required TextEditingController controller,
   required String label,
   required TextInputType type,
-  required FormFieldValidator<String> validate,
+  required FormFieldValidator<String>? validate,
   required IconData prefix,
   bool obSecureText = false,
   IconData? suffix,

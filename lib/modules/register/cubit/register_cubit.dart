@@ -13,13 +13,10 @@ class ShopRegisterCubit extends Cubit<ShopRegisterStates> {
   ShopLoginModel? loginModel;
 
   void userRegister(
-      {
-        required String name,
-        required String email,
-        required String password,
-        required String phone
-      })
-  {
+      {required String name,
+      required String email,
+      required String password,
+      required String phone}) {
     emit(ShopRegisterLoadingStates());
 
     DioHelper.postData(

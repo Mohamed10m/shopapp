@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/models/search_model.dart';
 import 'package:shop_app/modules/search/cubit/search_states.dart';

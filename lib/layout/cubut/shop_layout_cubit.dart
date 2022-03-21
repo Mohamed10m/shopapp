@@ -102,9 +102,9 @@ class ShopCubit extends Cubit<ShopStates> {
 
   ShopLoginModel? userModel;
 
-  void getUserData() {
-    DioHelper.getData(path: PROFILE, token: token).then((value) {
-      userModel = ShopLoginModel.fromJson(value.data);
+  void getUserData() async {
+    await DioHelper.getData(path: PROFILE, token: token).then((value) async {
+      userModel = await ShopLoginModel.fromJson(value.data);
       emit(ShopSuccessGetUserDataStates(userModel!));
     }).catchError((error) {
       print(error.toString());
@@ -113,10 +113,12 @@ class ShopCubit extends Cubit<ShopStates> {
   }
 
   void updateData(
-      {required String name, required String email, required String phone}) {
+      {required String name,
+      required String email,
+      required String phone}) async {
     emit(ShopLoadingUpdateUserDataStates());
 
-    DioHelper.putData(
+    await DioHelper.putData(
         path: UPDATE,
         token: token,
         data: {'name': name, 'email': email, 'phone': phone}).then((value) {
