@@ -1,9 +1,6 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shop_app/layout/cubut/shop_layout_cubit.dart';
-import 'package:shop_app/layout/cubut/shop_layout_states.dart';
+
 import 'package:shop_app/layout/shop_layout.dart';
 import 'package:shop_app/modules/login/login_screen.dart';
 import 'package:shop_app/modules/onBoardig_screen.dart';
@@ -20,6 +17,7 @@ void main() async {
   bool? onBoarding = CacheHelper.getData('onBoarding');
 
   token = CacheHelper.getData('token');
+  print(token);
 
   if (onBoarding != null) {
     if (token != null)
@@ -41,36 +39,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => ShopCubit()
-        ..getHomeData()
-        ..getCategoriesData()
-        ..getFavourites()
-        ..getUserData(),
-      child: BlocConsumer<ShopCubit, ShopStates>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return MaterialApp(
-            theme: ThemeData(
-              scaffoldBackgroundColor: Colors.white,
-              appBarTheme: AppBarTheme(
-                  backgroundColor: Colors.white,
-                  elevation: 0,
-                  systemOverlayStyle: SystemUiOverlayStyle(
-                    statusBarColor: Colors.white,
-                    statusBarIconBrightness: Brightness.dark,
-                  ),
-                  titleTextStyle: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24.0,
-                      fontFamily: 'Signika')),
+    return MaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            systemOverlayStyle: SystemUiOverlayStyle(
+              statusBarColor: Colors.white,
+              statusBarIconBrightness: Brightness.dark,
             ),
-            debugShowCheckedModeBanner: false,
-            home:OnBoardingScreen(),
-          );
-        },
+            titleTextStyle: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 24.0,
+                fontFamily: 'Signika')),
       ),
+      debugShowCheckedModeBanner: false,
+      home: startWidget,
     );
   }
 }

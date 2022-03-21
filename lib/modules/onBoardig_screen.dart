@@ -1,7 +1,3 @@
-
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/modules/login/login_screen.dart';
 import 'package:shop_app/shared/componants/componants.dart';
@@ -30,10 +26,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   bool isLast = false;
 
   List<BoardingModel> boarding = [
-    BoardingModel(
-        image: 'images/shop2.jpg',
-        title: 'Salla',
-        body: 'Welcome'),
+    BoardingModel(image: 'images/shop2.jpg', title: 'Salla', body: 'Welcome'),
     BoardingModel(
         image: 'images/shop1.jpg',
         title: 'Salla',
@@ -44,10 +37,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         body: 'Login now to browse our hot offers'),
   ];
 
-  void submit(){
-    CacheHelper.saveData('onBoarding', true).then((value){
-      if(value = true)
-      {
+  void submit() {
+    CacheHelper.saveData('onBoarding', true).then((value) {
+      if (value = true) {
         navigateAndFinish(context, ShopLoginScreen());
       }
     });
@@ -56,9 +48,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(actions: [
-          TextButton(onPressed:submit, child: Text('Skip',style: TextStyle(color: Colors.deepOrange,fontWeight: FontWeight.bold),))
-        ],),
+        appBar: AppBar(
+          actions: [
+            TextButton(
+                onPressed: submit,
+                child: Text(
+                  'Skip',
+                  style: TextStyle(
+                      color: Colors.deepOrange, fontWeight: FontWeight.bold),
+                ))
+          ],
+        ),
         body: Padding(
           padding: const EdgeInsets.all(30.0),
           child: Column(
@@ -103,7 +103,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     backgroundColor: Colors.deepOrange,
                     onPressed: () {
                       if (isLast == true) {
-                     submit();
+                        submit();
                       } else {
                         boardController.nextPage(
                             duration: Duration(

@@ -9,8 +9,6 @@ import 'package:shop_app/shared/endpoint/end_points.dart';
 import 'package:shop_app/shared/network/local/cache_helper.dart';
 
 class ShopRegisterScreen extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     var formKey = GlobalKey<FormState>();
@@ -67,7 +65,10 @@ class ShopRegisterScreen extends StatelessWidget {
                         defaultFormField(
                           controller: namedController,
                           validate: (String? value) {
-                            if (value!.isEmpty) return 'name must not be empty';
+                            if (value!.isEmpty) {
+                              return 'name must not be empty';
+                            } else
+                              return null;
                           },
                           prefix: Icons.drive_file_rename_outline,
                           label: 'Name',
@@ -79,8 +80,10 @@ class ShopRegisterScreen extends StatelessWidget {
                         defaultFormField(
                           controller: emailController,
                           validate: (String? value) {
-                            if (value!.isEmpty)
+                            if (value!.isEmpty) {
                               return 'email address must not be empty';
+                            } else
+                              return null;
                           },
                           prefix: Icons.email,
                           label: 'Email Address',
@@ -92,8 +95,10 @@ class ShopRegisterScreen extends StatelessWidget {
                         defaultFormField(
                           controller: phoneController,
                           validate: (String? value) {
-                            if (value!.isEmpty)
+                            if (value!.isEmpty) {
                               return 'phone address must not be empty';
+                            } else
+                              return null;
                           },
                           prefix: Icons.phone,
                           label: 'Phone',
@@ -107,7 +112,8 @@ class ShopRegisterScreen extends StatelessWidget {
                           validate: (String? value) {
                             if (value!.isEmpty) {
                               return 'password must not be empty';
-                            }
+                            } else
+                              return null;
                           },
                           prefix: Icons.lock,
                           suffix: ShopRegisterCubit.get(context).suffix,

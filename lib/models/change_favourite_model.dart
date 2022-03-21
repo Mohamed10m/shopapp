@@ -1,4 +1,4 @@
-class ChangeFavouritesModel{
+class ChangeFavouritesModel {
   late bool? status;
   late String? message;
 

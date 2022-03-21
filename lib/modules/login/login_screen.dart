@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,8 +62,10 @@ class ShopLoginScreen extends StatelessWidget {
                       defaultFormField(
                         controller: emailController,
                         validate: (String? value) {
-                          if (value!.isEmpty)
+                          if (value!.isEmpty) {
                             return 'email address must not be empty';
+                          } else
+                            return null;
                         },
                         prefix: Icons.email,
                         label: 'Email Address',
@@ -80,6 +80,7 @@ class ShopLoginScreen extends StatelessWidget {
                           if (value!.isEmpty) {
                             return 'password must not be empty';
                           }
+                          return null;
                         },
                         prefix: Icons.lock,
                         suffix: ShopLoginCubit.get(context).suffix,
